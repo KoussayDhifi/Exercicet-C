@@ -2,26 +2,26 @@
 
 
 
-int pt_col(int n, int A[][50], int l, int c) 
+int pt_col(int n, int A[][50], int l, int c,int nl,int nc) 
 {
 	int maxl = n;
 	int minl = n,i,j;
 
 	//Marra bsh nfixou ligne wa marra l colonne
 
-	for (i = 0; i<l ;i++) {
+	for (i = 0; i<nl ;i++) {
 		if (A[i][c]<minl)
 		{
 			return 0;
 		}
 	}
-	for (j = 0; j<c; j++) {
+	for (j = 0; j<nc; j++) {
+		
 		if (A[l][j] > maxl)
 		{
 			return 0;
 		}
 	}
-
 	return 1;
 }
 
@@ -58,7 +58,7 @@ int main () {
 	for (i = 0;i<nl;i++)
 	{
 		for(j = 0; j<nc; j++) {
-			if (pt_col(A[i][j],A,i,j) == 1)
+			if (pt_col(A[i][j],A,i,j,nl,nc) == 1)
 			{
 				printf("%d de coordonnes %i,%i est un point col",A[i][j],i,j);
 			}	
