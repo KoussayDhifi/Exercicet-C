@@ -6,7 +6,7 @@ int gan (int M[][10], int n, int x)
 {
 	int i,j,l = 1, c = 1;
 
-	for (i = 0; i<n-1 ; i++)
+	for (i = 0; i<n ; i++)
 	{
 		for (j = 0 ; j<n-1 ; j++)
 		{
@@ -19,17 +19,24 @@ int gan (int M[][10], int n, int x)
 			{
 				l = 1;
 			}
-			if (M[j][i] == x && M[j][i+1] == M[j][i])
-				{
-					c++;
-					if (c == 4)
-						return 1;
-				}else
-				{
-					l = 1;
-				}
-			}
 	}
+	}
+
+	for (i = 0; i<n ; i++)
+	{
+		for (j = 0; j<n-1 ; j++) {
+			if (M[j][i] == x && M[j+1][i] == M[j][i])
+			{
+				c = c+1;
+				if (c == 4)
+					return 1;
+				
+			}else
+				c = 1;
+		}
+	}
+
+
 	return 0;
 }
 
@@ -43,7 +50,7 @@ void Gangnat(int M[][10], int n)
 {
 	if (gan(M,n,1) == 1 && gan(M,n,2) == 1)
 		{
-			printf("Draw");
+			printf("Dra1");
 		}else if (gan(M,n,1) == 1)
 		{
 			printf("Player 1 Winner !!");
